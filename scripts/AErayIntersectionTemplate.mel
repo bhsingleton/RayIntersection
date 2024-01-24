@@ -1,0 +1,31 @@
+global proc AErayIntersectionTemplate(string $nodeName)
+{
+    
+    editorTemplate -beginScrollLayout;
+        
+        editorTemplate -beginLayout "Ray Intersection Attributes" -collapse false;
+			
+			editorTemplate -addControl "inMesh";
+            editorTemplate -addControl "origin";
+			editorTemplate -addControl "direction";
+			editorTemplate -addControl "testBothDirections";
+        
+        editorTemplate -endLayout;
+        
+		editorTemplate -beginLayout "Results" -collapse false;
+			
+			editorTemplate -addControl "hit";
+            editorTemplate -addControl "hitFaceIndex";
+			editorTemplate -addControl "hitTriangleIndex";
+			editorTemplate -addControl "hitLocation";
+			editorTemplate -addControl "hitNormal";
+			editorTemplate -addControl "hitParameter";
+        
+        editorTemplate -endLayout;
+		
+        AEdependNodeTemplate $nodeName;
+        editorTemplate -addExtraControls;
+        
+    editorTemplate -endScrollLayout;
+    
+}
