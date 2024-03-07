@@ -95,22 +95,9 @@ Only these values should be used when performing computations!
 
 		// Get input values
 		//
-		MDistance::Unit distanceUnit = MDistance::internalUnit();
-
 		MObject inMesh = inMeshHandle.asMesh();
-
-		MPoint origin = MPoint(
-			originXHandle.asDistance().asUnits(distanceUnit),
-			originYHandle.asDistance().asUnits(distanceUnit),
-			originZHandle.asDistance().asUnits(distanceUnit)
-		);
-
-		MVector direction = MVector(
-			directionXHandle.asDouble(), 
-			directionYHandle.asDouble(), 
-			directionZHandle.asDouble()
-		);
-
+		MPoint origin = MPoint(originXHandle.asDistance().asCentimeters(), originYHandle.asDistance().asCentimeters(), originZHandle.asDistance().asCentimeters());
+		MVector direction = MVector(directionXHandle.asDouble(), directionYHandle.asDouble(), directionZHandle.asDouble());
 		bool testBothDirections = testBothDirectionsHandle.asBool();
 
 		// Initialize mesh function set and accelerator
@@ -223,13 +210,13 @@ Only these values should be used when performing computations!
 		hitTriangleIndexHandle.setInt(hitTriangleIndex);
 		hitTriangleIndexHandle.setClean();
 
-		hitLocationXHandle.setMDistance(MDistance(hitLocation.x, distanceUnit));
+		hitLocationXHandle.setMDistance(MDistance(hitLocation.x, MDistance::kCentimeters));
 		hitLocationXHandle.setClean();
 
-		hitLocationYHandle.setMDistance(MDistance(hitLocation.y, distanceUnit));
+		hitLocationYHandle.setMDistance(MDistance(hitLocation.y, MDistance::kCentimeters));
 		hitLocationYHandle.setClean();
 
-		hitLocationZHandle.setMDistance(MDistance(hitLocation.z, distanceUnit));
+		hitLocationZHandle.setMDistance(MDistance(hitLocation.z, MDistance::kCentimeters));
 		hitLocationZHandle.setClean();
 
 		hitNormalXHandle.setDouble(hitNormal.x);
